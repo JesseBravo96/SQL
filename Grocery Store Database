@@ -1,0 +1,23 @@
+--Create a grocery store database
+
+CREATE TABLE GroceryStore (id INTEGER PRIMARY KEY, item TEXT, quantity INTEGER, price INTEGER, aisle INTEGER);
+
+--Insert items into grocery store database
+INSERT INTO GroceryStore VALUES (1, "Pineapple", 5,3,5);
+INSERT INTO GroceryStore VALUES (2, "Apple", 12, 1.50, 5);
+INSERT INTO GroceryStore VALUES (3, "Tomato", 7, 1.75, 6);
+INSERT INTO GroceryStore VALUES (4, "Zuchinni", 2, 3, 6);
+INSERT INTO GroceryStore VALUES (5, "Ketchup", 3, 3, 8);
+INSERT INTO GroceryStore VALUES (6, "Mayo", 5, 3, 8);
+INSERT INTO GroceryStore VALUES (7, "Mustard", 4, 4, 8);
+INSERT INTO GroceryStore VALUES (8, "Relish", 6, 3, 8);
+INSERT INTO GroceryStore VALUES (9, "Bread", 8, 4, 9);
+INSERT INTO GroceryStore VALUES (10, "Bagels", 8, 5, 9);
+INSERT INTO GroceryStore VALUES (11, "Cookies", 1, 6, 9);
+INSERT INTO GroceryStore VALUES (12, "Spatula", 6, 5, 10);
+INSERT INTO GroceryStore VALUES (13, "Tongs", 5, 3, 10);
+INSERT INTO GroceryStore VALUES (14, "Firewood", 4, 8, 10);
+INSERT INTO GroceryStore VALUES (15, "Buns", 3, 3.50, 9);
+
+--Select all items and order them by price ascending
+SELECT * FROM GroceryStore ORDER BY price asc;
