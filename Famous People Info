@@ -70,11 +70,12 @@ JOIN Location
 ON Munder_Difflin.id = Location.desk_id
 ORDER BY department ASC;
 
-/* Display the names of everyone and the area of the office that they work in. Group by area*/
+/* Display the names of everyone and the area of the office that they work in. Order by area*/
 SELECT Munder_Difflin.fullname, Location.area
 FROM Munder_Difflin
 JOIN Location
-ON Munder_Difflin.id = Location.desk_id;
+ON Munder_Difflin.id = Location.desk_id
+ORDER BY area;
 
 /* Display the names of everyone and the car they drive */
 SELECT Munder_Difflin.fullname AS "Full Name", Car.car_model AS "Car Model"
