@@ -1,0 +1,83 @@
+/* Create table about the people and what they do here */
+CREATE TABLE Munder_Difflin (id INTEGER PRIMARY KEY AUTOINCREMENT, fullname TEXT);
+
+INSERT INTO Munder_Difflin (fullname)
+VALUES ("Michael Scott");
+INSERT INTO Munder_Difflin (fullname)
+VALUES ("Dwight Schrute");
+INSERT INTO Munder_Difflin (fullname)
+VALUES ("Jim Halpert");
+INSERT INTO Munder_Difflin (fullname)
+VALUES ("Pam Halpert");
+INSERT INTO Munder_Difflin (fullname)
+VALUES ("Phyllis Lapin-Vance");
+INSERT INTO Munder_Difflin (fullname)
+VALUES ("Stanley Hudson");
+INSERT INTO Munder_Difflin (fullname)
+VALUES ("Oscar Martinez");
+INSERT INTO Munder_Difflin (fullname)
+VALUES ("Angela Martin");
+INSERT INTO Munder_Difflin (fullname)
+VALUES ("Kevin Malone");
+INSERT INTO Munder_Difflin (fullname)
+VALUES ("Kelly Kapoor");
+INSERT INTO Munder_Difflin (fullname)
+VALUES ("Ryan Howard");
+
+CREATE TABLE Couples (person_id INTEGER PRIMARY KEY AUTOINCREMENT, partner1 INTEGER, partner2 INTEGER);
+INSERT INTO Couples (partner1, partner2) VALUES (2,8);
+INSERT INTO Couples (partner1, partner2) VALUES (3,4);
+INSERT INTO Couples (partner1, partner2) VALUES (10,11);
+
+CREATE TABLE Car (car_id INTEGER PRIMARY KEY AUTOINCREMENT, car_model TEXT);
+INSERT INTO Car (car_model) VALUES ("Sebring");
+INSERT INTO Car (car_model) VALUES ("Trans Am");
+INSERT INTO Car (car_model) VALUES ("9-3 Aero");
+INSERT INTO Car (car_model) VALUES ("Outback");
+INSERT INTO Car (car_model) VALUES ("Corolla");
+INSERT INTO Car (car_model) VALUES ("300");
+INSERT INTO Car (car_model) VALUES ("Ion");
+INSERT INTO Car (car_model) VALUES ("Focus");
+INSERT INTO Car (car_model) VALUES ("CR-V");
+INSERT INTO Car (car_model) VALUES ("Accent");
+INSERT INTO Car (car_model) VALUES ("Civic");
+
+CREATE TABLE Location (desk_id INTEGER PRIMARY KEY AUTOINCREMENT, department TEXT, area TEXT);
+INSERT INTO Location (department, area) VALUES ("Regional Manager", "Own office");
+INSERT INTO Location (department, area) VALUES ("Assistant to the Regional Manager", "Main Floor");
+INSERT INTO Location (department, area) VALUES ("Sales", "Main Floor");
+INSERT INTO Location (department, area) VALUES ("Sales", "Main Floor");
+INSERT INTO Location (department, area) VALUES ("Sales", "Main Floor");
+INSERT INTO Location (department, area) VALUES ("Sales", "Main Floor");
+INSERT INTO Location (department, area) VALUES ("Accountant", "Main Floor");
+INSERT INTO Location (department, area) VALUES ("Accountant", "Main Floor");
+INSERT INTO Location (department, area) VALUES ("Accountant", "Main Floor");
+INSERT INTO Location (department, area) VALUES ("Customer Service", "Annex");
+INSERT INTO Location (department, area) VALUES ("Temp", "Closet");
+
+/* What are the names of the couples in the office? Show them side by side*/
+SELECT a.fullname AS "Partner 1", b.fullname AS "Partner 2"
+FROM Couples
+JOIN Munder_Difflin a
+ON Couples.partner1 = a.id
+JOIN Munder_Difflin b
+ON Couples.partner2 = b.id;
+
+/* Display the names of everyone and what department they are in */
+SELECT Munder_Difflin.fullname AS "Full Name", Location.department AS "Department"
+FROM Munder_Difflin
+JOIN Location
+ON Munder_Difflin.id = Location.desk_id
+ORDER BY department ASC;
+
+/* Display the names of everyone and the area of the office that they work in. Group by area*/
+SELECT Munder_Difflin.fullname, Location.area
+FROM Munder_Difflin
+JOIN Location
+ON Munder_Difflin.id = Location.desk_id;
+
+/* Display the names of everyone and the car they drive */
+SELECT Munder_Difflin.fullname AS "Full Name", Car.car_model AS "Car Model"
+FROM Munder_Difflin
+JOIN Car
+ON Munder_Difflin.id = Car.car_id;
