@@ -57,3 +57,15 @@ FROM BIT_DB.Spotifydata
 GROUP BY Track
 ORDER BY Popularity DESC
 LIMIT 10;
+
+--What is the average popularity for the artists? Those that are 90 and over in popularity should be labeled as "Top Star"
+WITH Average_Popularity AS (
+SELECT AVG(popularity) Avg_Popularity, artist_name Artist
+FROM Spotifydata
+GROUP BY Artist
+)
+SELECT Artist, Avg_Popularity AS 'Average Popularity', 'Top Star' AS tag
+FROM Average_Popularity
+WHERE Avg_Popularity >= 90
+GROUP BY Artist
+ORDER BY Avg_Popularity DESC;
