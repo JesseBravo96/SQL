@@ -85,3 +85,11 @@ GROUP BY FullName
 ORDER BY Sales DESC
 LIMIT 1;
 
+--Show all the playlists that each song is put into
+SELECT tracks.Name TrackName, playlists.Name PlaylistName
+FROM chinook.tracks
+JOIN chinook.playlist_track
+ON tracks.TrackId = playlist_track.TrackId
+JOIN chinook.playlists
+ON playlist_track.PlaylistId = playlists.PlaylistId
+ORDER BY TrackName;
